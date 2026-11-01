@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>人生悖论审判庭</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="court-shell">
+    <aside class="docket">
+      <a class="brand" href="#top">人生悖论审判庭</a>
+      <p class="eyebrow">Paradox Court Skill</p>
+      <h1><span>把你的困惑</span><span>送上法庭。</span></h1>
+      <p class="intro">输入一个真实人生问题，系统运行增强版决策分析：第一性原理剥洋葱 → 删除检查 → Cynefin分类 → 选项裂变 → 时间成本核算 → 贝叶斯校准 → 7维权衡矩阵（含时间窗口）→ 悖论关卡 → 后果阶梯 → 使命校验 → 预验尸 → 判决书 + 含实验纪律的行动实验。融合马斯克第一性原理工程思维。</p>
+
+      <section class="panel">
+        <h2>本庭规则</h2>
+        <ul class="rules">
+          <li>不替你决定，只帮你澄清问题。物理学是铁律，其他都是建议。</li>
+          <li>不做精确预测，只用数据和概率校准直觉。把拖延换算成成本。</li>
+          <li>不押上人生，先把空想变成最小可逆实验。原型就是证明。</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>演示案件</h2>
+        <div class="demo-buttons" id="demoButtons">
+          <button data-issue="我要不要裸辞做自媒体？我现在工作很稳定，但每天都觉得没意思。">裸辞做自媒体</button>
+          <button data-issue="我要不要回老家？大城市机会多，但我越来越累，父母也希望我回去。">回老家</button>
+          <button data-issue="我要不要花两万元报一个AI课程？我怕错过机会，也怕被割韭菜。">报课</button>
+          <button data-issue="我要不要分手？关系没有大问题，但我越来越觉得不像自己。">分手</button>
+        </div>
+      </section>
+
+      <section class="panel manual-panel">
+        <h2>使用说明书（6阶段流程）</h2>
+        <ol class="manual-steps">
+          <li><span>1</span><p>输入困惑，点击立案——AI 先剥物理真相层，再 Cynefin 分类，然后删除检查+裂变选项。</p></li>
+          <li><span>2</span><p>查看物理真相层、删除分析和裂变后的选项列表。</p></li>
+          <li><span>3</span><p>填写直觉宣誓——含时间成本问题和真相检查，贝叶斯分析师出庭校准。</p></li>
+          <li><span>4</span><p>开庭审判——等待 DeepSeek 生成含马斯克方法的完整决策分析。</p></li>
+          <li><span>5</span><p>逐幕浏览：7维权衡矩阵（含时间窗口）、后果阶梯、使命校验、预验尸报告、11角色交锋。</p></li>
+          <li><span>6</span><p>审判完成——下载判决卡图片，带走含实验纪律的 72 小时行动实验。</p></li>
+        </ol>
+      </section>
+
+      <footer class="creator-badge">
+        <span class="creator-name">六耳玩AI</span>
+        <span class="creator-sep">·</span>
+        <span class="creator-desc">AI超级个体实验室</span>
+      </footer>
+    </aside>
+
+    <section class="courtroom">
+      <header class="court-header">
+        <div>
+          <p class="eyebrow">决策分析流程</p>
+          <h2>审判庭 v2.1</h2>
+        </div>
+        <span class="mode-pill" id="modePill">待立案</span>
+      </header>
+
+      <section class="case-input">
+        <label for="issueInput">你的案件</label>
+        <textarea id="issueInput" rows="4" placeholder="例如：我要不要裸辞做自媒体？我现在工作很稳定，但每天都觉得没意思。"></textarea>
+        <div class="actions actions-filecase">
+          <button id="fileCaseBtn">立案</button>
+          <button id="resetTrialBtn" type="button">新案件</button>
+        </div>
+      </section>
+
+      <section class="trial-grid">
+        <article class="card">
+          <div class="card-head">
+            <p class="eyebrow">Docket</p>
+            <h3>1 案件档案</h3>
+          </div>
+          <div id="filingBox" class="content-box">尚未立案。</div>
+          <div class="cynefin-pill"></div>
+          <div id="optionsArea" class="options-area" hidden></div>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <p class="eyebrow">Oath</p>
+            <h3>2 直觉宣誓</h3>
+          </div>
+          <ol id="oathQuestions" class="question-list"></ol>
+          <p class="oath-hint">用第一直觉回复，信息越详细，判决越精准。</p>
+          <textarea id="oathInput" rows="6" placeholder="回答宣誓问题。可以很短，但要真实。" disabled></textarea>
+          <div class="actions actions-trial">
+            <button id="runTrialBtn" class="primary" disabled>开庭审判</button>
+          </div>
+        </article>
+
+        <article class="card wide">
+          <div class="card-head">
+            <p class="eyebrow">Trial</p>
+            <h3>3 审判流程</h3>
+          </div>
+          <div id="trialProgress" class="trial-progress" hidden>
+            <div class="progress-top">
+              <strong id="progressTitle">准备开庭</strong>
+              <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+            <ol id="progressSteps" class="progress-steps"></ol>
+          </div>
+          <div id="trialStage" class="trial-stage" hidden></div>
+          <pre id="verdictBox" class="document-box">开庭后，这里会生成完整判决书。</pre>
+        </article>
+
+        <article class="card share-card-panel">
+          <div class="card-head">
+            <p class="eyebrow">Share</p>
+            <h3>4 可分享卡片</h3>
+          </div>
+          <div id="cardProgress" class="card-progress" hidden>
+            <div class="progress-top">
+              <strong id="cardProgressTitle">准备生成信息图</strong>
+              <span id="cardProgressPercent">0%</span>
+            </div>
+            <div class="progress-track" aria-hidden="true">
+              <div id="cardProgressFill" class="progress-fill"></div>
+            </div>
+            <ol id="cardProgressSteps" class="progress-steps"></ol>
+          </div>
+          <div id="shareImageWrap" class="share-image-wrap" hidden>
+            <img id="shareImage" alt="人生悖论审判庭可分享判决卡" />
+            <div class="download-row">
+              <button id="downloadPngBtn" type="button" class="download-card">下载 PNG</button>
+              <a id="downloadSvgLink" class="download-card" href="#" download="人生悖论审判庭-判决卡.svg">下载 SVG</a>
+            </div>
+          </div>
+          <pre id="shareBox" class="document-box compact-doc">暂无。</pre>
+        </article>
+
+        <article class="card">
+          <div class="card-head">
+            <p class="eyebrow">Log</p>
+            <h3>5 审判日志</h3>
+          </div>
+          <pre id="logBox" class="document-box compact-doc">暂无。</pre>
+        </article>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

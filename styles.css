@@ -1,0 +1,1021 @@
+:root {
+  --ink: #151514;
+  --muted: #6b675f;
+  --paper: #f4f5f3;
+  --panel: #ffffff;
+  --line: rgba(21, 21, 20, 0.14);
+  --red: #8e2f2f;
+  --red-dark: #5d1c1c;
+  --green: #2f675c;
+  --gold: #d4a84f;
+  --shadow: 0 24px 80px rgba(44, 28, 18, 0.16);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(21, 21, 20, 0.035) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(21, 21, 20, 0.035) 1px, transparent 1px),
+    linear-gradient(135deg, #f5f6f4 0%, #e8ece9 100%);
+  background-size: 42px 42px, 42px 42px, auto;
+  font-family: ui-serif, "Noto Serif SC", "Songti SC", Georgia, serif;
+  overflow-x: hidden;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.court-shell {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.54fr) minmax(0, 1.46fr);
+  gap: 24px;
+  width: 100%;
+  min-height: 100vh;
+  padding: clamp(14px, 3vw, 32px);
+}
+
+.docket,
+.courtroom {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.84);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(16px);
+}
+
+.docket {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  padding: clamp(22px, 4vw, 40px);
+}
+
+.brand {
+  color: inherit;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-decoration: none;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--red);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 0;
+  font-size: clamp(38px, 4vw, 56px);
+  line-height: 1.04;
+  letter-spacing: 0;
+  word-break: keep-all;
+}
+
+h1 span {
+  display: block;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+h3 {
+  margin: 4px 0 0;
+  font-size: 24px;
+}
+
+.intro,
+.rules,
+.filing-list dd,
+.question-list {
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.panel,
+.card,
+.case-input {
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.panel {
+  padding: 18px;
+}
+
+.rules {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.manual-panel h2 {
+  margin-bottom: 12px;
+}
+
+.manual-steps {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.manual-steps li {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.manual-steps span {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border-radius: 999px;
+  color: #ffffff;
+  background: var(--red-dark);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.manual-steps p {
+  margin: 1px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.demo-buttons {
+  display: grid;
+  gap: 10px;
+}
+
+button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: var(--ink);
+  background: var(--panel);
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.primary,
+.actions button:first-child {
+  border-color: var(--red-dark);
+  color: #ffffff;
+  background: var(--red-dark);
+}
+
+.courtroom {
+  display: grid;
+  grid-template-rows: auto auto minmax(0, 1fr);
+  overflow: auto;
+}
+
+.court-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding: 24px 28px;
+}
+
+.mode-pill {
+  border: 1px solid rgba(47, 103, 92, 0.24);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--green);
+  background: rgba(47, 103, 92, 0.08);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.case-input {
+  display: grid;
+  gap: 12px;
+  margin: 20px 24px 0;
+  padding: 18px;
+}
+
+.case-input label {
+  font-weight: 900;
+}
+
+textarea {
+  width: 100%;
+  min-height: 100px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  color: var(--ink);
+  background: var(--panel);
+  outline: none;
+}
+
+textarea:focus {
+  border-color: rgba(142, 47, 47, 0.55);
+  box-shadow: 0 0 0 4px rgba(142, 47, 47, 0.08);
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.trial-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.5fr);
+  gap: 18px;
+  padding: 20px 24px 24px;
+  overflow: auto;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-height: 220px;
+  padding: 18px;
+}
+
+.card.wide {
+  grid-template-rows: auto auto minmax(0, 1fr);
+  min-height: 540px;
+}
+
+.share-card-panel {
+  align-content: start;
+  grid-template-rows: auto auto auto auto;
+}
+
+.card-head {
+  margin-bottom: 12px;
+}
+
+.content-box,
+.document-box {
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.document-box {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: ui-serif, "Noto Serif SC", "Songti SC", Georgia, serif;
+  line-height: 1.78;
+}
+
+.compact-doc {
+  max-height: 360px;
+}
+
+.share-card-panel .compact-doc {
+  align-self: start;
+  max-height: none;
+  overflow: visible;
+}
+
+.trial-progress,
+.card-progress {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(47, 103, 92, 0.18);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(236, 243, 239, 0.72);
+}
+
+.trial-progress[hidden],
+.card-progress[hidden] {
+  display: none;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  color: var(--green);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 14px;
+}
+
+.progress-top strong,
+.progress-top span {
+  font-weight: 900;
+}
+
+.progress-track {
+  overflow: hidden;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(21, 21, 20, 0.09);
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--green), var(--gold));
+  transition: width 360ms ease;
+}
+
+.progress-steps {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.progress-steps li {
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+  color: var(--muted);
+}
+
+.progress-steps li span {
+  display: grid;
+  width: 24px;
+  height: 24px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.progress-steps li strong {
+  display: block;
+  color: var(--ink);
+  font-size: 15px;
+}
+
+.progress-steps li p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.progress-steps li.done span,
+.progress-steps li.active span {
+  border-color: rgba(47, 103, 92, 0.28);
+  color: #ffffff;
+  background: var(--green);
+}
+
+.progress-steps li.active strong {
+  color: var(--green);
+}
+
+.progress-steps li.failed span {
+  border-color: rgba(142, 47, 47, 0.28);
+  color: #ffffff;
+  background: var(--red);
+}
+
+.trial-stage {
+  display: grid;
+  gap: 14px;
+  overflow: auto;
+  border: 1px solid rgba(142, 47, 47, 0.16);
+  border-radius: 18px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(255, 254, 253, 0.96), rgba(244, 245, 243, 0.72));
+}
+
+.trial-stage[hidden] {
+  display: none;
+}
+
+.stage-meter {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  color: var(--green);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.stage-meter div {
+  overflow: hidden;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(21, 21, 20, 0.09);
+}
+
+.stage-meter i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--red), var(--gold));
+}
+
+.stage-lead {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.stage-docket {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.stage-docket div {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.stage-docket dt,
+.stage-quote strong,
+.stage-question span,
+.stage-answer span {
+  color: var(--red);
+  font-weight: 900;
+}
+
+.stage-docket dd {
+  margin: 0;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.stage-quote,
+.stage-question,
+.stage-text,
+.future-grid div {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.72);
+}
+
+.stage-quote p,
+.future-grid p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.stage-question {
+  display: grid;
+  gap: 8px;
+  border-color: rgba(93, 28, 28, 0.20);
+  background: rgba(93, 28, 28, 0.06);
+}
+
+.stage-question strong {
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.stage-text {
+  color: var(--ink);
+  line-height: 1.72;
+}
+
+.stage-answer {
+  display: grid;
+  gap: 8px;
+}
+
+.stage-answer textarea {
+  min-height: 120px;
+}
+
+.future-grid {
+  display: grid;
+  gap: 10px;
+}
+
+.future-grid strong {
+  color: var(--green);
+}
+
+.stage-divider {
+  height: 1px;
+  margin: 14px 0;
+  background: var(--line);
+}
+
+.stage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.stage-actions button:disabled {
+  border-color: rgba(21, 21, 20, 0.12);
+  color: rgba(21, 21, 20, 0.42);
+  background: rgba(21, 21, 20, 0.04);
+  opacity: 1;
+}
+
+.share-image-wrap {
+  display: grid;
+  gap: 12px;
+  align-self: start;
+  margin-bottom: 10px;
+}
+
+.share-image-wrap[hidden] {
+  display: none;
+}
+
+.share-image-wrap img {
+  display: block;
+  width: 100%;
+  max-height: 520px;
+  object-fit: contain;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #f4f5f3;
+}
+
+.download-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.download-card {
+  display: inline-flex;
+  width: auto;
+  min-width: 116px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(47, 103, 92, 0.28);
+  border-radius: 999px;
+  padding: 9px 14px;
+  color: var(--green);
+  background: rgba(47, 103, 92, 0.08);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+button.download-card {
+  cursor: pointer;
+}
+
+.download-card:disabled {
+  opacity: 0.52;
+}
+
+.filing-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.filing-list div {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.filing-list dt {
+  font-weight: 900;
+}
+
+.filing-list dd {
+  margin: 0;
+}
+
+.question-list {
+  margin: 0 0 12px;
+  padding-left: 22px;
+}
+
+@media (max-width: 1080px) {
+  .court-shell,
+  .trial-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .courtroom {
+    min-height: 860px;
+  }
+}
+
+@media (max-width: 620px) {
+  .court-shell {
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .docket,
+  .courtroom {
+    border-radius: 22px;
+  }
+
+  .court-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  h1 {
+    font-size: 42px;
+  }
+
+  .download-row {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .download-card {
+    width: 100%;
+  }
+}
+
+
+/* ── Phase 1: Cynefin Badge ── */
+.cynefin-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.cynefin-badge span {
+  font-size: 16px;
+}
+.cynefin-badge small {
+  font-size: 12px;
+  opacity: 0.7;
+}
+.cynefin-complex { background: #f3e8e8; color: #8e2f2f; }
+.cynefin-complicated { background: #e8eef3; color: #2f4f8e; }
+.cynefin-simple { background: #e8f3e8; color: #2f6e2f; }
+.cynefin-chaotic { background: #f3efe8; color: #8e6e2f; }
+.cynefin-explain {
+  font-size: 14px;
+  color: #6b675f;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* ── Phase 2: Options List ── */
+.options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.options-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(21,21,20,0.06);
+  line-height: 1.55;
+}
+.options-list li:last-child { border-bottom: none; }
+.opt-num {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #5d1c1c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* ── Phase 3: Calibration Box ── */
+.calib-box {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+.calib-row {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 12px;
+  padding: 8px 14px;
+  background: #f8f7f5;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.calib-row label {
+  font-weight: 700;
+  color: #5d1c1c;
+  font-size: 13px;
+}
+.calib-row span {
+  color: #363330;
+}
+
+/* ── Phase 4: Matrix + Sensitivity ── */
+.matrix-narrative {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #363330;
+  margin-bottom: 16px;
+}
+.sens-box {
+  display: grid;
+  gap: 8px;
+}
+.sens-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 12px;
+  padding: 8px 14px;
+  background: #f0f5f2;
+  border-radius: 8px;
+  font-size: 14px;
+}
+.sens-row label {
+  font-weight: 700;
+  color: #2f675c;
+  font-size: 13px;
+}
+.sens-row span {
+  color: #363330;
+}
+
+/* ── Phase 5: Paradox Cards ── */
+.paradox-card {
+  padding: 14px 16px;
+  background: #fdfbf9;
+  border: 1px solid rgba(21,21,20,0.08);
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+.paradox-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: #8e2f2f;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.paradox-card h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #151514;
+  margin: 0 0 6px;
+}
+.paradox-purpose {
+  font-size: 13px;
+  color: #6b675f;
+  margin: 0 0 8px;
+}
+.paradox-question {
+  font-size: 15px;
+  font-weight: 600;
+  color: #5d1c1c;
+  padding: 8px 12px;
+  background: rgba(142,47,47,0.06);
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+.paradox-expose {
+  font-size: 13px;
+  color: #6b675f;
+}
+
+/* ── Consequence Ladder ── */
+.ladder-path {
+  margin-bottom: 16px;
+}
+.ladder-path h4 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #5d1c1c;
+  margin: 0 0 8px;
+}
+.ladder-step {
+  padding: 8px 14px 8px 28px;
+  border-left: 2px solid rgba(21,21,20,0.12);
+  margin-bottom: 1px;
+  position: relative;
+}
+.ladder-step::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 14px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #8e2f2f;
+}
+.ladder-step strong {
+  font-size: 12px;
+  color: #6b675f;
+  display: block;
+  margin-bottom: 2px;
+}
+.ladder-step p {
+  font-size: 14px;
+  color: #363330;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── Premortem Box ── */
+.premortem-box {
+  padding: 14px 16px;
+  background: #fcf8f6;
+  border: 1px solid rgba(142,47,47,0.15);
+  border-radius: 10px;
+}
+.premortem-box h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8e2f2f;
+  margin: 0 0 10px;
+}
+.premortem-box ol, .premortem-box ul {
+  margin: 0 0 12px;
+  padding-left: 20px;
+  font-size: 14px;
+  color: #363330;
+  line-height: 1.6;
+}
+.premortem-box li { margin-bottom: 6px; }
+.prevent {
+  font-size: 13px;
+  color: #2f675c;
+}
+
+/* ── Cross Examination Cards ── */
+.cross-card {
+  padding: 12px 14px;
+  background: #f8f7f5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+.cross-head {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.role-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-right: 6px;
+}
+.role-badge.philosophy { background: #e8e0d4; color: #5d1c1c; }
+.role-badge.analyst { background: #d4e0e8; color: #2f4f8e; }
+.cross-view {
+  font-size: 14px;
+  color: #363330;
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+.cross-question {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8e2f2f;
+  line-height: 1.5;
+}
+
+.cynefin-pill {
+  margin-top: 10px;
+}
+
+.options-area {
+  margin-top: 12px;
+}
+.options-area .options-list li {
+  padding: 6px 0;
+}
+
+.oath-hint {
+  font-size: 13px;
+  color: #8e2f2f;
+  opacity: 0.7;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+
+/* === v2.1 物理真相层 + 删除检查 === */
+.physical-truth-box {
+  margin-top: 14px;
+  padding: 12px 14px;
+  background: #f0f4f8;
+  border-left: 3px solid #2f675c;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #2f675c;
+  line-height: 1.6;
+}
+.physical-truth-box .pt-label {
+  display: block;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  color: #1a4d44;
+}
+.deletion-check-box {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: #fef7f0;
+  border-left: 3px solid #d4a84f;
+  border-radius: 6px;
+  font-size: 13px;
+  color: #5d4a2c;
+  line-height: 1.6;
+}
+.deletion-check-box .dc-label {
+  display: block;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+  color: #8a6d20;
+}
+
+/* ── 品牌署名 ── */
+.creator-badge {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.creator-name {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--red);
+  letter-spacing: 0;
+}
+.creator-sep {
+  color: var(--muted);
+  font-size: 12px;
+}
+.creator-desc {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "PingFang SC", sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+}

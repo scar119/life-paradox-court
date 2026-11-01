@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# 运行时会话数据：包含用户输入的真实人生困惑和判决书，不提交
+sessions/
